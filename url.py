@@ -74,4 +74,4 @@ def image(name):
     return redirect("/static/images/" + image, code=301)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
