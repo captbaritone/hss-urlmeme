@@ -1,0 +1,120 @@
+<html>
+<head>
+    <style>
+input {
+    background-color: #fff;
+    border-color: -moz-use-text-color -moz-use-text-color #e2e2e2;
+    border-width: 1px;
+    color: #000;
+    font-size: 12px;
+    margin: 0 .4em;
+    letter-spacing: normal;
+    outline-style: none;
+    padding: .4em 0;
+    text-indent: 0.25em;
+    width: 14em;
+}
+body {
+    text-align: center;
+    font-family: sans-serif;
+    color: #929292;
+}
+.url {
+    margin: 0 auto;
+    display: inline-block;
+    margin: 50px;
+    font-size: 20px;
+}
+
+.url .field {
+    display: inline-block;
+}
+.url .field label {
+    display: block;
+    margin-bottom: .2em;
+    font-size: 12px;
+    display: none;
+}
+.slash {
+    font-size: 20px;
+}
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 500px;
+    visibility: hidden;
+}
+</style>
+<title>{{ base_url }}</title>
+</head>
+<body>
+    <div class='url'>
+        <span class='slash'>{{ base_url }}</span>
+        <div class='field'>
+            <input placeholder='Search String' id='name'>
+        </div>
+        <span class='slash'>[.png | .jpg | .gif]</span>
+    </div>
+    <br />
+    <p>
+        <a href='' id='link'></a>
+    </p>
+    <br />
+    <img src='' id='img' />
+    <script>
+        function debounce(fn, delay) {
+            var timer = null;
+            return function () {
+                var context = this, args = arguments;
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    fn.apply(context, args);
+                }, delay);
+            };
+        }
+        var fields = ['name'].map(function(item) {
+            return document.getElementById(item);
+        });
+        var img = document.getElementById('img');
+        var link = document.getElementById('link');
+
+        img.onload = function(e) {
+            img.style.visibility = 'visible';
+        }
+
+        function memeUrl() {
+            var dirs = [];
+            fields.forEach(function(item) {
+                if(item.value) {
+                    dirs.push(encodeURIComponent(item.value));
+                }
+            });
+            if(dirs.join('') === '') {
+                return '';
+            }
+            return '{{ base_url }}' + dirs.join('/') + '.png';
+        }
+
+        var updateMeme = debounce(function() {
+            img.style.visibility = 'hidden';
+            img.src = memeUrl();
+            link.innerHTML = memeUrl();
+            link.href = memeUrl();
+        }, 1000);
+
+        var processChange = function() {
+            fields.forEach(function(item) {
+                item.value = item.value.replace(/ /g,"_");
+            });
+            updateMeme();
+        }
+
+        processChange();
+        fields.forEach(function(item) {
+            item.addEventListener('input', function() { processChange(); });
+            item.addEventListener('focus', function() { this.select(); });
+        });
+    </script>
+</body>
+</html>
