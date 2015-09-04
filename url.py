@@ -10,6 +10,10 @@ APP_ROOT = os.path.dirname(__file__)
 app = Flask(__name__, static_url_path='/static')
 
 IMAGES = {
+    "bromance.jpg": [
+        'bromance',
+        'tomo d cash'
+    ],
     "garland-dance.gif": [
         "garland dance",
         "trice dance",
