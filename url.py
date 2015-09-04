@@ -33,7 +33,8 @@ IMAGES = {
     ],
     "cooper.jpg": [
         "cooper",
-        "mascot"
+        "mascot",
+        "feed me",
     ]
 }
 
