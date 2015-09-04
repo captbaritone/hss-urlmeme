@@ -1,11 +1,11 @@
-# urlme.me
+# hss.urlme.me
 
-A meme generator where the URL is the user interface.
+Post images to HipChat
 
-    http://urlme.me/<meme_image>/<top_text>/<bottom_text>.png
+    http://hss.urlme.me/<search>.png
 
-# How?
+# Contribute
 
-I keep a list of meme images which I think make the cut in `memes.json`. I then
-use [N-gram](https://en.wikipedia.org/wiki/N-gram) comparison to find the
-closes meme to the image you specified.
+Add an image to `static/images/`, and give it a name or two in `url.py:IMAGES`.
+
+Pull requests welcome.
