@@ -30,6 +30,10 @@ IMAGES = {
         "d cache",
         "d money",
         "d ram"
+    ],
+    "cooper.jpg": [
+        "cooper",
+        "mascot"
     ]
 }
 
