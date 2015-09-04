@@ -19,6 +19,13 @@ IMAGES = {
         "ofer uggs",
         "goldstein uggs",
         "tulioz uggs"
+    ],
+    "dcash.jpg": [
+        "daniel cash",
+        "d cash",
+        "d cache",
+        "d money",
+        "d ram"
     ]
 }
 
