@@ -62,6 +62,7 @@ img {
     </p>
     <br />
     <img src='' id='img' />
+    <p>Add images via pull request on <a href='https://github.com/captbaritone/hss-urlmeme'>GitHub</a></p>
     <script>
         function debounce(fn, delay) {
             var timer = null;
@@ -93,7 +94,7 @@ img {
             if(dirs.join('') === '') {
                 return '';
             }
-            return '{{ base_url }}' + dirs.join('/') + '.png';
+            return '{{ base_url }}' + dirs.join('/') + '.gif';
         }
 
         var updateMeme = debounce(function() {
