@@ -44,6 +44,7 @@ def replace_underscore(string):
 
 
 def tokenize(string):
+    string = re.sub(r' ', '', string)
     return replace_underscore(string.lower())
 
 
@@ -57,6 +58,7 @@ def guess_image(name):
     best_score = None
     for guess_image, names in IMAGES.iteritems():
         for guess in names:
+            guess = tokenize(guess)
             score = NGram.compare(guess, name)
             if best_score is None or score > best_score:
                 best_score = score
