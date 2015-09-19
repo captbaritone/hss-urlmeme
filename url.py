@@ -9,6 +9,8 @@ APP_ROOT = os.path.dirname(__file__)
 
 app = Flask(__name__, static_url_path='/static')
 
+IMAGE_PATH = 'static/images/'
+
 IMAGES = {
     "bromance.jpg": [
         'bromance',
@@ -87,7 +89,7 @@ def image(name):
         name = name[:-4]
 
     image = guess_image(name)
-    return redirect("/static/images/" + image, code=301)
+    return redirect('/' + IMAGE_PATH + image, code=301)
 
 if __name__ == "__main__":
     app.run(debug=False)
