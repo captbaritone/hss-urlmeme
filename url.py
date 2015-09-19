@@ -36,6 +36,10 @@ IMAGES = {
         "lia",
         "Lia Zadoyan"
     ],
+    "kerey-keytar.jpg": [
+        "kerey roper keytar",
+        "kerey couch"
+    ],
     "cooper.jpg": [
         "cooper",
         "mascot",
