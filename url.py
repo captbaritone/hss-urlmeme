@@ -31,6 +31,11 @@ IMAGES = {
         "d money",
         "d ram"
     ],
+    "lia-dance.gif": [
+        "lia dance",
+        "lia",
+        "Lia Zadoyan"
+    ],
     "cooper.jpg": [
         "cooper",
         "mascot",
