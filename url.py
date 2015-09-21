@@ -1,3 +1,4 @@
+import glob
 import re
 import os
 
@@ -38,7 +39,7 @@ IMAGES = {
         "lia",
         "Lia Zadoyan"
     ],
-    "kerey-keytar.jpg": [
+    "kerey-keytar.gif": [
         "kerey roper keytar",
         "kerey couch"
     ],
@@ -49,6 +50,8 @@ IMAGES = {
     ]
 }
 
+LOCAL_IMAGE_PATH = os.path.join(APP_ROOT, IMAGE_PATH)
+
 
 def replace_underscore(string):
     return re.sub(r'_', ' ', string)
@@ -57,6 +60,15 @@ def replace_underscore(string):
 def tokenize(string):
     string = re.sub(r' ', '', string)
     return replace_underscore(string.lower())
+
+
+def fix_image_dict(folder, image_dict):
+    """Add any images not in the hard-coded dictionary"""
+    image_pattern = os.path.join(LOCAL_IMAGE_PATH, "*.*")
+    for file_path in glob.glob(image_pattern):
+        file_name = os.path.basename(file_path)
+        if file_name not in image_dict:
+            image_dict[file_name] = [replace_underscore(os.path.splitext(file_name)[0])]
 
 
 def guess_image(name):
@@ -92,4 +104,5 @@ def image(name):
     return redirect('/' + IMAGE_PATH + image, code=301)
 
 if __name__ == "__main__":
+    fix_image_dict(LOCAL_IMAGE_PATH, IMAGES)
     app.run(debug=False)
