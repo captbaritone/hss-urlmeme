@@ -13,6 +13,10 @@ app = Flask(__name__, static_url_path='/static')
 IMAGE_PATH = 'static/images/'
 
 IMAGES = {
+    "terra-run.gif": [
+        'terra run',
+        'terra race'
+    ],
     "bromance.jpg": [
         'bromance',
         'tomo d cash'
